@@ -13,4 +13,4 @@ https://sites.google.com/view/fii-poo/2021/laboratories
 http://students.info.uaic.ro/~gheorghe.balan/
 
 # SpreadSheet Prezente
-https://docs.google.com/spreadsheets/d/1Xgcs0VzBAYBW-cqcLjm2cx-pslqrOzAckoqmsXSInUI/edit
+https://docs.google.com/spreadsheets/d/1Xgcs0VzBAYBW-cqcLjm2cx-pslqrOzAckoqmsXSInUI/edit#gid=881938833
