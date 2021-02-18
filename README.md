@@ -14,5 +14,3 @@
 
 # SpreadSheet Prezente
 <a href="https://docs.google.com/spreadsheets/d/1Xgcs0VzBAYBW-cqcLjm2cx-pslqrOzAckoqmsXSInUI/edit#gid=881938833" target="_blank">SpreadSheet cu prezente si username github</a>
-
-[go](https://sites.google.com/view/fii-poo/2021/laboratories){:target="_blank" rel="noopener"}
