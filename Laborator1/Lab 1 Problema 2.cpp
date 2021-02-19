@@ -25,7 +25,7 @@ int main()
 	    fscanf(fp,"%s",str);
         sum = sum + characterToInteger(str);;
 	}
-    printf("Suma numerelor din fisier este: %i", sum);
-    fclose(fp);
+   	printf("Suma numerelor din fisier este: %i", sum);
+	fclose(fp);
 	return 0;
 }
