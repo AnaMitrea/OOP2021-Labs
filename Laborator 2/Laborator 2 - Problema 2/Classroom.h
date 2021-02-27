@@ -9,8 +9,8 @@ class Classroom
 	float mathsGrade, englishGrade, historyGrade;
 
 public:
-	Classroom();
-	~Classroom();
+	//Classroom();
+	//~Classroom();
 
 	void setName(char studName[50]);
 	char* getName();

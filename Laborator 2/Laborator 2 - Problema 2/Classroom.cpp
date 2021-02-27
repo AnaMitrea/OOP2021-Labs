@@ -42,6 +42,7 @@ float Classroom::averageGrade() {
 	return average;
 }
 
+/*
 Classroom::Classroom() {
 	cout << "Am apelat constructorul pentru clasa Classroom\n";
 	this->mathsGrade = 0;
@@ -52,3 +53,4 @@ Classroom::Classroom() {
 Classroom::~Classroom() {
 	cout << "Am apelat destructorul pentru clasa Classroom\n";
 }
+*/
