@@ -53,3 +53,16 @@ char* Math::Add(const char* str1, const char* str2) {
 	memcpy(str + strlen(str1), str2, strlen(str2));
 	return str;
 }
+
+// METODA V2
+/*
+char* Math::Add(const char* str1, const char* str2) {
+	if (str1 == nullptr || str2 == nullptr)
+		return nullptr;
+	char* aux = new char[strlen(str1) + strlen(str2) + 1];
+	aux[0] = 0;
+	strcat(aux, str1);
+	strcat(aux, str2);
+	return aux;
+}
+*/
