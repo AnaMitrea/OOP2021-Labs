@@ -55,7 +55,7 @@ char* Math::Add(const char* str1, const char* str2) {
 }
 
 // METODA V2
-/*
+/* 
 char* Math::Add(const char* str1, const char* str2) {
 	if (str1 == nullptr || str2 == nullptr)
 		return nullptr;
