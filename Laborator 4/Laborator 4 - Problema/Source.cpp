@@ -12,7 +12,7 @@ int main()
 	obj1.InsertSort(false);
 	obj1.Print();
 	cout << endl;
-
+	cout << "--------------------------------------------------" << endl;
 	Sort obj2;
 	cout << "Al doilea vector initial (generat prin lista de initializare) este: ";
 	obj2.Print();
@@ -22,6 +22,7 @@ int main()
 	obj2.BubbleSort(true);
 	obj2.Print();
 	cout << endl;
+	cout << "--------------------------------------------------" << endl;
 
 	int v[5] = { 1,20,5,6,0 };
 	Sort obj3(v, 5);
@@ -33,20 +34,26 @@ int main()
 	obj3.InsertSort(true);
 	obj3.Print();
 	cout << endl;
+	cout << "--------------------------------------------------" << endl;
 
-	Sort obj4(6, 10, 30, 0, 1, 4, 6);
+	Sort obj4(6, 10, 30, 0, 1, 4, 2);
 	cout << "Al patrulea vector initial (generat cu var) este: ";
 	obj4.Print();
 	cout << endl;
+	cout << "Al patrulea vector sortat cu Quick Sort: ";
+	obj4.QuickSort(0,5,true);
+	obj4.Print();
+	cout << endl;
 
+	cout << "--------------------------------------------------" << endl;
 	char sir[15] = "10,40,100,5,70";
 	Sort obj5(sir);
 	cout << "Al cincilea vector initial (generat cu sir de char) este: ";
 	obj5.Print();
 	cout << endl;
 
-	cout << "Al cincilea vector sortat cu Bubble Sort: ";
-	obj5.BubbleSort(true);
+	cout << "Al cincilea vector sortat cu Quick Sort: ";
+	obj5.QuickSort(0,4,true);
 	obj5.Print();
 	cout << endl;
 

@@ -82,7 +82,7 @@ Sort::Sort(char sir[])  // Constructorul 5
 	}
 	if (sir[i] == '\0')
 	{
-		this->vec[j] = nr;
+		this->vec[j] = (int)nr;
 	}
 	this->left = 0;
 	this->right = num;
@@ -143,11 +143,11 @@ void Sort::QuickSort(int l, int r, bool ascendent)
 {
 	if (ascendent == true)
 	{
-		if (this->left < this->right)
+		if (l < r)
 		{
-			int poz = partition(this->left, this->right);
-			QuickSort(this->left, poz - 1, ascendent);
-			QuickSort(poz + 1, this->right, ascendent);
+			int poz = partition(l, r);
+			QuickSort(l, poz - 1, ascendent);
+			QuickSort(poz + 1, r, ascendent);
 		}
 	}
 	else
