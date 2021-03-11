@@ -8,7 +8,7 @@ int main()
 	obj1.Print();
 	cout << endl;
 
-	cout << "Primul vector sortat cu Insert Sort: ";
+	cout << "Primul vector sortat descrescator cu Insert Sort: ";
 	obj1.InsertSort(false);
 	obj1.Print();
 	cout << endl;
@@ -18,8 +18,8 @@ int main()
 	obj2.Print();
 	cout << endl;
 
-	cout << "Al doilea vector sortat cu Bubble Sort: ";
-	obj2.BubbleSort(true);
+	cout << "Al doilea vector sortat descrescator cu Bubble Sort: ";
+	obj2.BubbleSort(false);
 	obj2.Print();
 	cout << endl;
 	cout << "--------------------------------------------------" << endl;
@@ -30,7 +30,7 @@ int main()
 	obj3.Print();
 	cout << endl;
 
-	cout << "Al treilea vector sortat cu Insert Sort: ";
+	cout << "Al treilea vector sortat crescator cu Insert Sort: ";
 	obj3.InsertSort(true);
 	obj3.Print();
 	cout << endl;
@@ -40,8 +40,8 @@ int main()
 	cout << "Al patrulea vector initial (generat cu var) este: ";
 	obj4.Print();
 	cout << endl;
-	cout << "Al patrulea vector sortat cu Quick Sort: ";
-	obj4.QuickSort(0,5,true);
+	cout << "Al patrulea vector sortat descrescator cu Quick Sort: ";
+	obj4.QuickSort(0,5,false);
 	obj4.Print();
 	cout << endl;
 
@@ -52,7 +52,7 @@ int main()
 	obj5.Print();
 	cout << endl;
 
-	cout << "Al cincilea vector sortat cu Quick Sort: ";
+	cout << "Al cincilea vector sortat crescator cu Quick Sort: ";
 	obj5.QuickSort(0,4,true);
 	obj5.Print();
 	cout << endl;

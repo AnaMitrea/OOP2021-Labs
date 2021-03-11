@@ -3,8 +3,6 @@
 Sort::Sort(int number, int min, int max)  // Constr 1
 {
 	cout << "Am apelat constructorul 1!" << endl;
-	this->left = 0;
-	this->right = number - 1;
 	this->vec = new int[number];
 	this->counter = number;
 	srand((unsigned)time(0));   // daca nu utilizez srand, la fiecare executie va fi aceeasi secv de nr
@@ -14,7 +12,7 @@ Sort::Sort(int number, int min, int max)  // Constr 1
 	}
 }
 
-Sort::Sort() : counter{ 10 }, left{ 0 }, right{ 9 }  // Constr 2
+Sort::Sort() : counter{ 10 }  // Constr 2
 {
 	cout << "Am apelat constructorul 2!" << endl;
 	vec = new int[counter] {9,1,0,2,6,100,3,54,67,4};
@@ -29,8 +27,6 @@ Sort::Sort(int v[], int num) // constr 3
 		this->vec[i] = v[i];
 	}
 	this->counter = num;
-	this->left = 0;
-	this->right = num - 1;
 }
 
 Sort::Sort(int num, ...)  // constructorul 4
@@ -38,7 +34,6 @@ Sort::Sort(int num, ...)  // constructorul 4
 	cout << "Am apelat constructorul 4!" << endl;
 	this->vec = new int[num];
 	this->counter = num;
-	this->left = 0, this->right = num - 1;
 	va_list vl;
 	va_start(vl, num);
 	for (int i = 0; i < num; i++)
@@ -84,8 +79,6 @@ Sort::Sort(char sir[])  // Constructorul 5
 	{
 		this->vec[j] = (int)nr;
 	}
-	this->left = 0;
-	this->right = num;
 }
 
 Sort::~Sort() 
@@ -119,18 +112,32 @@ void Sort::InsertSort(bool ascendent)
 	}
 }
 
-int Sort::partition(int l, int r)
+int Sort::partition(int l, int r, int ascendent)
 {
 	int pivot = this->vec[r];
 	int i = l - 1;
 	for (int j = l; j <= r - 1; j++)
 	{
-		if (this->vec[j] < pivot)
+		if (ascendent == true)
 		{
-			i++;
-			int aux = this->vec[i];
-			this->vec[i] = this->vec[j];
-			this->vec[j] = aux;
+
+			if (this->vec[j] < pivot)
+			{
+				i++;
+				int aux = this->vec[i];
+				this->vec[i] = this->vec[j];
+				this->vec[j] = aux;
+			}
+		}
+		else
+		{
+			if (this->vec[j] > pivot)
+			{
+				i++;
+				int aux = this->vec[i];
+				this->vec[i] = this->vec[j];
+				this->vec[j] = aux;
+			}
 		}
 	}
 	int aux = this->vec[i + 1];
@@ -141,18 +148,11 @@ int Sort::partition(int l, int r)
 
 void Sort::QuickSort(int l, int r, bool ascendent)
 {
-	if (ascendent == true)
+	if (l < r)
 	{
-		if (l < r)
-		{
-			int poz = partition(l, r);
-			QuickSort(l, poz - 1, ascendent);
-			QuickSort(poz + 1, r, ascendent);
-		}
-	}
-	else
-	{
-		// descrescator
+		int poz = partition(l, r, ascendent);
+		QuickSort(l, poz - 1, ascendent);
+		QuickSort(poz + 1, r, ascendent);
 	}
 }
 

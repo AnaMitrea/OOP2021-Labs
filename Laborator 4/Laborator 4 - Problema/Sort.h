@@ -8,7 +8,7 @@ using namespace std;
 
 class Sort
 {
-    int counter, left, right;
+    int counter;
     int* vec;
 public:
     Sort(int number, int min, int max);  // constructorul 1
@@ -18,7 +18,7 @@ public:
     Sort(char sir[]); // constructorul 5
     ~Sort();
     void InsertSort(bool ascendent = false);
-    int partition(int l, int r);
+    int partition(int l, int r, int ascendent = false);
     void QuickSort(int l, int r, bool ascendent = false);
     void BubbleSort(bool ascendent = false);
     void Print();
