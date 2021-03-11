@@ -8,6 +8,8 @@ int main()
 	obj1.Print();
 	cout << endl;
 
+	cout << "Numarul de elemente din primul vector este: " << obj1.GetElementsCount() << endl;
+
 	cout << "Primul vector sortat descrescator cu Insert Sort: ";
 	obj1.InsertSort(false);
 	obj1.Print();
@@ -52,10 +54,14 @@ int main()
 	obj5.Print();
 	cout << endl;
 
+	cout << "Elementul de pe pozitia 4 este: " << obj5.GetElementFromIndex(3) << endl;
+
 	cout << "Al cincilea vector sortat crescator cu Quick Sort: ";
 	obj5.QuickSort(0,4,true);
 	obj5.Print();
 	cout << endl;
+
+
 
 	return 0;
 }
