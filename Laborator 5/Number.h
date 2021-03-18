@@ -15,11 +15,11 @@ public:
 	//Number(const Number&& object); // move constructor
 	//Number& operator=(Number&& object);	// move assignment operator
 
-	bool operator<(Number object);
-	bool operator>(Number object);
-	bool operator<=(Number object);
-	//bool operator>=(Number object);
-	//bool operator==(Number object);
+	bool operator<(Number& object);
+	bool operator>(Number& object);
+	bool operator<=(Number& object);
+	bool operator>=(Number& object);
+	bool operator==(Number& object);
 
 
 	void SwitchBase(int newBase);

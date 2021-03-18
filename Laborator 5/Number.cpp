@@ -79,18 +79,38 @@ Number& Number::operator=(Number&& object)
 }
 */
 
-bool Number::operator<(Number object)
+bool Number::operator<(Number& object)
 {
+	if(decimal < object.decimal)
+		return true;
 	return false;
 }
 
-bool Number::operator>(Number object)
+bool Number::operator>(Number& object)
 {
+	if (decimal > object.decimal)
+		return true;
 	return false;
 }
 
-bool Number::operator<=(Number object)
+bool Number::operator<=(Number& object)
 {
+	if (decimal <= object.decimal)
+		return true;
+	return false;
+}
+
+bool Number::operator>=(Number& object)
+{
+	if (decimal >= object.decimal)
+		return true;
+	return false;
+}
+
+bool Number::operator==(Number& object)
+{
+	if (decimal == object.decimal)
+		return true;
 	return false;
 }
 
