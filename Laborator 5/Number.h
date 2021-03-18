@@ -21,6 +21,8 @@ public:
 	bool operator>=(Number& object);
 	bool operator==(Number& object);
 
+	void operator--();        //--nr
+	void operator--(int nr);  //nr--
 
 	void SwitchBase(int newBase);
 	void Print();

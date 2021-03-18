@@ -114,6 +114,38 @@ bool Number::operator==(Number& object)
 	return false;
 }
 
+void Number::operator--()
+{
+	cout << "Prefix form of op --" << endl;
+	strcpy(number, number + 1);
+	// fac iar conversia numarului in baza 10 deoarece s-a schimbat
+	int length = strlen(number);
+	int p = 1, i;
+	decimal = 0;
+	for (i = length - 1; i >= 0; i--)
+	{
+		decimal = decimal + decimalValue(number[i]) * p;
+		p = p * baza;
+	}
+}
+
+void Number::operator--(int nr)
+{
+	cout << "Postfix form of op --" << endl;
+	_strrev(number);
+	strcpy(number, number + 1);
+	_strrev(number);
+	// fac iar conversia numarului in baza 10 deoarece s-a schimbat
+	int length = strlen(number);
+	int p = 1, i;
+	decimal = 0;
+	for (i = length - 1; i >= 0; i--)
+	{
+		decimal = decimal + decimalValue(number[i]) * p;
+		p = p * baza;
+	}
+}
+
 void Number::SwitchBase(int newBase)
 {
 	// convertesc baza b in 10, apoi din 10 in baza noua.
@@ -135,12 +167,13 @@ void Number::SwitchBase(int newBase)
 
 void Number::Print()
 {
-	cout << "The number is: ";
+	cout << "Number: ";
 	for (unsigned int i = 0; i < strlen(number); i++)
 	{
 		cout << number[i];
 	}
 	cout << endl;
+	cout << "Decimal number: " << decimal << endl;
 }
 
 int Number::GetDigitsCount()
