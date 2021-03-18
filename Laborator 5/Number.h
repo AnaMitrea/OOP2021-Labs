@@ -13,11 +13,10 @@ public:
 	~Number();
 	//Number(const Number& object);  // copy constructor
 	//Number(const Number&& object); // move constructor
-	//Number& operator=(Number&& object);	// move assignment operator
+	//Number& operator=(Number&& object);	// move assignment operator ???
 
-	// Addition operator
-	char* operator+(Number& object);
-	// Substraction operator
+	Number operator+(Number& object);  // Addition operator
+	Number operator-(Number& object);  // Substraction operator
 	// Negate operator
 	// Index operator
 

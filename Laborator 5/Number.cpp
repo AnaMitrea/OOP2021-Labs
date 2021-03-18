@@ -55,40 +55,6 @@ Number::~Number()
 	number = nullptr;
 }
 
-char* Number::operator+(Number& object)
-{
-	cout << "-Addition operator-" << endl;
-	// fac suma in baza 10 a celor doua numere apoi o convertesc la baza mai mare
-
-	int res = decimal + object.decimal;
-	int i = 0;
-	char* nr = new char[101];  // in nr voi avea rezultatul sumei in baza mai mare
-	if (baza > object.baza)
-	{
-		while (res > 0)
-		{
-			nr[i] = charValue(res % baza);
-			res /= baza;
-			i++;
-		}
-		nr[i] = '\0';
-		_strrev(nr);
-		return nr;
-	}
-	else
-	{
-		while (res > 0)
-		{
-			nr[i] = charValue(res % object.baza);
-			res /= object.baza;
-			i++;
-		}
-		nr[i] = '\0';
-		_strrev(nr);
-		return nr;
-	}
-}
-
 /*
 * Number::Number(const Number& object)
 {
@@ -104,14 +70,98 @@ Number::Number(const Number&& object)
 	baza = object.baza;
 }
 
-Number& Number::operator=(Number&& object)
+Number& Number::operator=(Number&& object) noexcept
 {
 	cout << "Move assignment operator" << endl;
-	strcpy(number, object.number);
-	baza = object.baza;
+	if (this != &object)
+	{
+		delete[] number;
+		int size = strlen(object.number) + 1;
+		//number = (char*)realloc(number, size);
+		memcpy(number, object.number, size);
+		baza = object.baza;
+
+		object.number = nullptr;
+		object.baza = 0;
+		object.decimal = 0;
+	}
 	return *this;
 }
 */
+
+
+
+Number Number::operator+(Number& object)
+{
+	cout << "-Addition operator-" << endl;
+	// fac suma in baza 10 a celor doua numere apoi o convertesc la baza mai mare
+
+	int res = decimal + object.decimal;
+	int i = 0, biggerBase;
+	char* nr = new char[101];  // in nr voi avea rezultatul sumei in baza mai mare
+
+	if (baza > object.baza)
+		biggerBase = baza;
+	else
+		biggerBase = object.baza;
+
+	if (res == 0)
+	{
+		nr[i] = '0';
+		i++;
+	}
+	while (res > 0)
+	{
+		nr[i] = charValue(res % biggerBase);
+		res /= baza;
+		i++;
+	}
+	nr[i] = '\0';
+	_strrev(nr);
+	return Number(nr, biggerBase);
+}
+
+Number Number::operator-(Number& object)
+{
+	cout << "-Substraction operator-" << endl;
+	// fac dif in baza 10 a celor doua numere apoi o convertesc la baza mai mare
+
+	int res = decimal - object.decimal;
+	int i = 0, biggerBase;
+	char* nr = new char[101];  // in nr voi avea rezultatul diferentei in baza mai mare
+	bool negative = false;
+	if (res < 0)
+		negative = true;
+	if (baza > object.baza)
+		biggerBase = baza;
+	else
+		biggerBase = object.baza;
+	if (negative == true)
+		res = -res;
+	if (res == 0)
+	{
+		nr[i] = '0';
+		i++;
+	}
+	while (res > 0)
+	{
+		nr[i] = charValue(res % biggerBase);
+		res /= baza;
+		i++;
+	}
+	if (negative == true)
+	{
+		nr[i] = '-';
+		nr[i + 1] = '\0';
+		_strrev(nr);
+	}
+	else
+	{
+		nr[i] = '\0';
+		_strrev(nr);
+	}
+	return Number(nr,biggerBase);
+}
 
 bool Number::operator<(Number& object)
 {
@@ -185,6 +235,11 @@ void Number::SwitchBase(int newBase)
 	// convertesc din baza 10 in baza noua.
 	char* nr = new char[101];
 	int i = 0, decimalNum = decimal;
+	if (decimalNum == 0)
+	{
+		nr[i] = '0';
+		i++;
+	}
 	while(decimalNum > 0)
 	{
 		nr[i] = charValue(decimalNum % newBase);
