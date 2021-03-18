@@ -2,13 +2,13 @@
 
 int main()
 {
-	Number nr1("1101", 2);
+	Number nr1("10", 10);
 	//cout << "The number of digits is " << nr1.GetDigitsCount() << " and the base is " << nr1.GetBase() << endl;
 	//nr1.SwitchBase(3);
 	//cout << "The number of digits is " << nr1.GetDigitsCount() << " and the base is " << nr1.GetBase() << endl;
 	//nr1.Print();
 
-	Number nr2("2A4", 16);
+	Number nr2("13", 10);
 	/*
 		cout << "--Comparison of two objects--> ";
 	if (nr1 > nr2)
@@ -22,8 +22,10 @@ int main()
 
 	//--nr1;
 	//nr1.Print();
-	nr1--;
-	nr1.Print();
+	//nr1--;
+	//nr1.Print();
+
+	cout << nr1 + nr2 << endl;
 
 	return 0;
 }

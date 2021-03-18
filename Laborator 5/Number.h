@@ -15,6 +15,13 @@ public:
 	//Number(const Number&& object); // move constructor
 	//Number& operator=(Number&& object);	// move assignment operator
 
+	// Addition operator
+	char* operator+(Number& object);
+	// Substraction operator
+	// Negate operator
+	// Index operator
+
+	// Relation operators
 	bool operator<(Number& object);
 	bool operator>(Number& object);
 	bool operator<=(Number& object);

@@ -55,6 +55,40 @@ Number::~Number()
 	number = nullptr;
 }
 
+char* Number::operator+(Number& object)
+{
+	cout << "-Addition operator-" << endl;
+	// fac suma in baza 10 a celor doua numere apoi o convertesc la baza mai mare
+
+	int res = decimal + object.decimal;
+	int i = 0;
+	char* nr = new char[101];  // in nr voi avea rezultatul sumei in baza mai mare
+	if (baza > object.baza)
+	{
+		while (res > 0)
+		{
+			nr[i] = charValue(res % baza);
+			res /= baza;
+			i++;
+		}
+		nr[i] = '\0';
+		_strrev(nr);
+		return nr;
+	}
+	else
+	{
+		while (res > 0)
+		{
+			nr[i] = charValue(res % object.baza);
+			res /= object.baza;
+			i++;
+		}
+		nr[i] = '\0';
+		_strrev(nr);
+		return nr;
+	}
+}
+
 /*
 * Number::Number(const Number& object)
 {
@@ -148,7 +182,7 @@ void Number::operator--(int nr)
 
 void Number::SwitchBase(int newBase)
 {
-	// convertesc baza b in 10, apoi din 10 in baza noua.
+	// convertesc din baza 10 in baza noua.
 	char* nr = new char[101];
 	int i = 0, decimalNum = decimal;
 	while(decimalNum > 0)
