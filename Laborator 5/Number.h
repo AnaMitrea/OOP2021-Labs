@@ -9,13 +9,14 @@ class Number
 	int decimal;
 	int baza;
 public:
-	Number(const char* value, int base); // where base is between 2 and 16
-	~Number();
-	//Number(const Number& object);  // copy constructor
-	//Number(const Number&& object); // move constructor
+	Number(const char* value, int base); // constructor
+	~Number();  //destructor
+	Number(const Number& object);  // copy constructor
+	Number(Number&& object); // move constructor
 	//Number& operator=(Number&& object);	// move assignment operator ???
 
 	Number operator+(Number& object);  // Addition operator
+	void operator+=(Number& object);
 	Number operator-(Number& object);  // Substraction operator
 	// Negate operator
 	// Index operator

@@ -55,21 +55,73 @@ Number::~Number()
 	number = nullptr;
 }
 
+Number::Number(const Number& object)
+{
+	cout << "[ COPY CONSTRUCTOR ]" << endl;
+	number = new char[strlen(object.number) + 1];
+	memcpy(number, object.number, strlen(object.number) + 1);
+	baza = object.baza;
+	decimal = -1;
+
+	if (baza >= 2 && baza <= 16)
+	{
+		// Convertire nr din baza b in baza 10
+		int length = strlen(number);
+		int p = 1, i;
+		int toDecimal = 0;
+		for (i = length - 1; i >= 0; i--)
+		{
+			if (decimalValue(number[i]) >= baza)
+			{
+				cout << "Wrong Number! Please insert another number.";
+				decimal = -1;
+				break;
+			}
+			toDecimal = toDecimal + decimalValue(number[i]) * p;
+			p = p * baza;
+		}
+		// toDecimal = numarul in baza 10
+		decimal = toDecimal;
+	}
+	else
+		cout << "Error! Insert a base between 2 and 16!" << endl;
+}
+
+Number::Number(Number&& object)
+{
+	cout << "[ MOVE CONSTRUCTOR ]" << endl;
+	char* temp = object.number;
+	object.number = nullptr;
+	number = new char[strlen(temp) + 1];
+	memcpy(number, temp, strlen(temp) + 1);
+	baza = object.baza;
+	decimal = -1;
+
+	if (baza >= 2 && baza <= 16)
+	{
+		// Convertire nr din baza b in baza 10
+		int length = strlen(number);
+		int p = 1, i;
+		int toDecimal = 0;
+		for (i = length - 1; i >= 0; i--)
+		{
+			if (decimalValue(number[i]) >= baza)
+			{
+				cout << "Wrong Number! Please insert another number.";
+				decimal = -1;
+				break;
+			}
+			toDecimal = toDecimal + decimalValue(number[i]) * p;
+			p = p * baza;
+		}
+		// toDecimal = numarul in baza 10
+		decimal = toDecimal;
+	}
+	else
+		cout << "Error! Insert a base between 2 and 16!" << endl;
+}
+
 /*
-* Number::Number(const Number& object)
-{
-	cout << "Copy constructor" << endl;
-	strcpy(number, object.number);
-	baza = object.baza;
-}
-
-Number::Number(const Number&& object)
-{
-	cout << "Move constructor" << endl;
-	strcpy(number, object.number);
-	baza = object.baza;
-}
-
 Number& Number::operator=(Number&& object) noexcept
 {
 	cout << "Move assignment operator" << endl;
@@ -88,7 +140,6 @@ Number& Number::operator=(Number&& object) noexcept
 	return *this;
 }
 */
-
 
 
 Number Number::operator+(Number& object)
@@ -113,12 +164,41 @@ Number Number::operator+(Number& object)
 	while (res > 0)
 	{
 		nr[i] = charValue(res % biggerBase);
-		res /= baza;
+		res /= biggerBase;
 		i++;
 	}
 	nr[i] = '\0';
 	_strrev(nr);
 	return Number(nr, biggerBase);
+}
+
+void Number::operator+=(Number& object)
+{
+	cout << "-Addition operator 2-" << endl;
+	// fac suma in baza 10 a celor doua numere apoi o convertesc la baza mai mare
+
+	int res = decimal + object.decimal;
+	int i = 0;
+	char* nr = new char[101];  // in nr voi avea rezultatul sumei in baza mai mare
+
+	if (res == 0)
+	{
+		nr[i] = '0';
+		i++;
+	}
+	while (res > 0)
+	{
+		nr[i] = charValue(res % baza);
+		res /= baza;
+		i++;
+	}
+	nr[i] = '\0';
+	_strrev(nr);
+
+	int size = strlen(nr) + 1;
+	number = (char*)realloc(number, size);
+	memcpy(number, nr, strlen(nr) + 1);
+	cout << "din functia +=: " << number << " in baza " << baza << endl;
 }
 
 Number Number::operator-(Number& object)
@@ -130,12 +210,15 @@ Number Number::operator-(Number& object)
 	int i = 0, biggerBase;
 	char* nr = new char[101];  // in nr voi avea rezultatul diferentei in baza mai mare
 	bool negative = false;
+
 	if (res < 0)
 		negative = true;
+
 	if (baza > object.baza)
 		biggerBase = baza;
 	else
 		biggerBase = object.baza;
+
 	if (negative == true)
 		res = -res;
 	if (res == 0)
@@ -143,10 +226,10 @@ Number Number::operator-(Number& object)
 		nr[i] = '0';
 		i++;
 	}
-	while (res > 0)
+	while (res > 0) // conversie in baza mai mare
 	{
 		nr[i] = charValue(res % biggerBase);
-		res /= baza;
+		res /= biggerBase;
 		i++;
 	}
 	if (negative == true)
