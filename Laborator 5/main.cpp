@@ -8,8 +8,10 @@ int main()
 	//cout << "The number of digits is " << nr1.GetDigitsCount() << " and the base is " << nr1.GetBase() << endl;
 	//nr1.Print();
 
-	Number nr2("10", 16);
-	Number nr3 = nr2;
+	//Number nr2("10", 16);
+	Number nr3("F", 16);
+	nr3.Print();
+	nr3 = 255;
 	nr3.Print();
 	/*
 		cout << "--Comparison of two objects--> ";

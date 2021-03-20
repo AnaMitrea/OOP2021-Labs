@@ -17,6 +17,17 @@ char charValue(int decimalNumber)
 		return (char)(decimalNumber - 10 + 'A');
 }
 
+int charToDecimal(const char* value)
+{
+	int toDecimal = 0, p = 1;
+	for (int i = strlen(value) - 1; i >= 0; i--)
+	{
+		toDecimal = toDecimal + decimalValue(value[i]) * p;
+		p = p * 10;
+	}
+	return toDecimal;
+}
+
 Number::Number(const char* value, int base)
 {
 	cout << "[ THE CONSTRUCTOR ]" << endl;
@@ -119,6 +130,62 @@ Number::Number(Number&& object)
 	}
 	else
 		cout << "Error! Insert a base between 2 and 16!" << endl;
+}
+
+Number& Number::operator=(int value)
+{
+	// convertesc value la baza obiectului
+	char num[101];
+	int index = 0;
+	while (value > 0)
+	{
+		num[index++] = charValue(value % baza);
+		value /= baza;
+	}
+	num[index] = '\0';
+	_strrev(num);
+	int size = index;
+	number = (char*)realloc(number, size);
+	memcpy(number, num, size);
+	//return (*this);
+}
+
+Number& Number::operator=(const char* value)
+{
+	// convertesc value la baza obiectului
+	int toDecimal = 0, p = 1;
+	// from char to decimal
+	for (int i = strlen(value) - 1; i >= 0; i--)
+	{
+		if (decimalValue(value[i]) >= baza)
+		{
+			cout << "Wrong Number! Please insert another number.";
+			decimal = -1;
+			break;
+		}
+		toDecimal = toDecimal + decimalValue(value[i]) * p;
+		p = p * baza;
+	}
+	//from decimal to char to the base of the object
+	char* nr = new char[101];
+	int i = 0;
+	if (toDecimal == 0)
+	{
+		nr[i] = '0';
+		i++;
+	}
+	while (toDecimal > 0)
+	{
+		nr[i] = charValue(toDecimal % baza);
+		toDecimal /= baza;
+		i++;
+	}
+	nr[i] = '\0';
+	_strrev(nr);
+	number = (char*)realloc(number, strlen(nr) + 1);
+	memcpy(number, nr, strlen(nr) + 1);
+	decimal = charToDecimal(value);
+	//return (*this);
 }
 
 /*
