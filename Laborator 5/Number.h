@@ -14,7 +14,7 @@ public:
 	Number(const Number& object);  // copy constructor
 	Number(Number&& object); // move constructor
 	
-	//Number& operator=(Number&& object);	// move assignment operator ???
+	Number& operator=(Number&& object);	// move assignment operator ???
 	Number& operator=(int value);  // object = nr
 	Number& operator=(const char* value); // object = sir caractere
 	

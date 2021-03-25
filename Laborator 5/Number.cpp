@@ -185,28 +185,25 @@ Number& Number::operator=(const char* value)
 	number = (char*)realloc(number, strlen(nr) + 1);
 	memcpy(number, nr, strlen(nr) + 1);
 	decimal = charToDecimal(value);
-	//return (*this);
+	return (*this);
 }
 
-/*
-Number& Number::operator=(Number&& object) noexcept
+Number& Number::operator=(Number&& object)
 {
 	cout << "Move assignment operator" << endl;
 	if (this != &object)
 	{
 		delete[] number;
 		int size = strlen(object.number) + 1;
-		//number = (char*)realloc(number, size);
+		number = (char*)realloc(number, size);
 		memcpy(number, object.number, size);
 		baza = object.baza;
 
 		object.number = nullptr;
-		object.baza = 0;
-		object.decimal = 0;
 	}
 	return *this;
 }
-*/
+
 
 
 Number Number::operator+(Number& object)
