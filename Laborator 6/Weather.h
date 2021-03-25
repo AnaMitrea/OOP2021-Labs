@@ -1,5 +1,4 @@
 #pragma once
-#include "Car.h"
 
 enum Weather {
 	Sunny = 1,
