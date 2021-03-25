@@ -13,4 +13,4 @@
 <a href="http://students.info.uaic.ro/~gheorghe.balan/" target="_blank">Alte detalii - Site Balan Gheorghe</a>
 
 # SpreadSheet Prezente
-<a href="https://docs.google.com/spreadsheets/d/1z3amfwPfbMdhFlZNJ9vkDJgBfj9ceSCPun_0-Fba5ZI/edit#gid=1872142926" target="_blank">SpreadSheet cu prezente si username github</a>
+<a href="https://docs.google.com/spreadsheets/d/1z3amfwPfbMdhFlZNJ9vkDJgBfj9ceSCPun_0-Fba5ZI/edit#gid=1872142926" target="_blank">SpreadSheet cu prezente</a>
