@@ -5,7 +5,7 @@ Mazda::Mazda()
 	cout << "[ CONSTRUCTOR ]" << endl;
 	car_name = new char[strlen("Mazda" + 1)];
 	memcpy(car_name, "Mazda", strlen("Mazda") + 1);
-	fuel_capacity = 60;
+	fuel_capacity = 20;
 	fuel_consumption = 12;
 	rain_speed = 65;
 	sunny_speed = 85;
