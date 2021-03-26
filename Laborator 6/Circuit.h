@@ -9,13 +9,13 @@ protected:
 	unsigned int index;
 	unsigned int max_index;
 	unsigned int weather;
-	unsigned int length;
+	float length;
 public:
 	Circuit();
 	~Circuit();
 	bool AddCar(Car* newCar);
 	void SetWeather(Weather set_weather);
-	void SetLength(int distance);
+	void SetLength(float distance);
 	void Race();
 	void Show_Final_Ranks();
 	void Show_Who_Did_Not_Finish();

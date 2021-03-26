@@ -10,6 +10,7 @@ Mercedes::Mercedes()
 	rain_speed = 70;
 	sunny_speed = 90;
 	snow_speed = 65;
+	race_time = 0;
 	/*
 	* capacitatea = x litri
 	* consumul =  x litri / 100 km
@@ -53,3 +54,22 @@ int Mercedes::getSnowSpeed()
 	return snow_speed;
 }
 
+void Mercedes::setRaceTime(float time)
+{
+	this->race_time = time;
+}
+
+float Mercedes::getRaceTime()
+{
+	return race_time;
+}
+
+void Mercedes::setRaceConsumption(float consum)
+{
+	this->race_consumption = consum;
+}
+
+float Mercedes::getRaceConsumption()
+{
+	return race_consumption;
+}

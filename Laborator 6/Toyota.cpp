@@ -10,6 +10,7 @@ Toyota::Toyota()
 	rain_speed = 70;
 	sunny_speed = 80;
 	snow_speed = 40;
+	race_time = 0;
 	/*
 	* capacitatea = x litri
 	* consumul =  x litri / 100 km
@@ -53,3 +54,22 @@ int Toyota::getSnowSpeed()
 	return snow_speed;
 }
 
+void Toyota::setRaceTime(float time)
+{
+	this->race_time = time;
+}
+
+float Toyota::getRaceTime()
+{
+	return race_time;
+}
+
+void Toyota::setRaceConsumption(float consum)
+{
+	this->race_consumption = consum;
+}
+
+float Toyota::getRaceConsumption()
+{
+	return race_consumption;
+}

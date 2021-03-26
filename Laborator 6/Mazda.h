@@ -12,4 +12,8 @@ public:
 	int getRainSpeed();
 	int getSunnySpeed();
 	int getSnowSpeed();
+	void setRaceTime(float time);
+	float getRaceTime();
+	void setRaceConsumption(float consum);
+	float getRaceConsumption();
 };

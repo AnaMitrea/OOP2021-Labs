@@ -9,7 +9,7 @@
 int main()
 {
 	Circuit c;
-	c.SetLength(50);
+	c.SetLength(250);
 	c.SetWeather(Weather::Sunny);
 
 	Car* dacia = new Dacia();
@@ -23,7 +23,7 @@ int main()
 	Car* mercedes = new Mercedes();
 	c.AddCar(mercedes);
 
-
+	c.Race();
 
 	c.Print();
 
