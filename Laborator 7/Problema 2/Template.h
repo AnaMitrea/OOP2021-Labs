@@ -24,7 +24,7 @@ public:
 };
 
 template<class T>
-inline VectorTemplate<T>::VectorTemplate()
+VectorTemplate<T>::VectorTemplate()
 {
 	currentSize = 0;
 	arr = new T[currentSize + 1];
