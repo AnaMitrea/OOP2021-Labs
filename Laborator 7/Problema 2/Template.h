@@ -51,7 +51,7 @@ template<class T>
 inline VectorTemplate<T>::VectorTemplate()
 {
 	currentSize = 0;
-	arr = (T*)(malloc(currentSize * sizeof(T)));
+
 }
 
 template<class T>
