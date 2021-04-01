@@ -3,6 +3,30 @@
 #include <stdlib.h>
 using namespace std;
 
+template<typename T>
+bool comparator1(T nr1, T nr2)
+{
+	if (nr1 < nr2)
+		return true;
+	return false;
+}
+
+template<typename T>
+bool comparator2(T nr1, T nr2)
+{
+	if (nr1 > nr2)
+		return true;
+	return false;
+}
+
+template<typename T>
+bool equal(T nr1, T nr2)
+{
+	if (nr1 == nr2)
+		return true;
+	return false;
+}
+
 template <class T>
 class VectorTemplate
 {
@@ -15,11 +39,11 @@ public:
 	T pop();
 	void remove(int position);
 	void insert(T element, int position);
-	//void sort() cu callback
 	T* getElement(int position);
 	void setElement(T element, int position);
 	int countElements();
-	// int firstIndexOf(T element, functia de callback)
+	void sort(bool (*callback)(T, T));
+	void firstIndexOf(T element, bool (*callback)(T, T));
 	void Print();
 };
 
@@ -31,7 +55,7 @@ inline VectorTemplate<T>::VectorTemplate()
 }
 
 template<class T>
-VectorTemplate<T>::~VectorTemplate()
+inline VectorTemplate<T>::~VectorTemplate()
 {
 	free(arr);
 	/*
@@ -42,7 +66,7 @@ VectorTemplate<T>::~VectorTemplate()
 }
 
 template<class T>
-void VectorTemplate<T>::push(T variable) // la sf vect
+inline void VectorTemplate<T>::push(T variable) // la sf vect
 {
 	//realocare de memorie cu inca o pozitie pt push
 	/*
@@ -66,7 +90,7 @@ void VectorTemplate<T>::push(T variable) // la sf vect
 }
 
 template<class T>
-T VectorTemplate<T>::pop()
+inline T VectorTemplate<T>::pop()
 {
 	return arr[currentSize - 1];
 }
@@ -110,6 +134,64 @@ template<class T>
 inline int VectorTemplate<T>::countElements()
 {
 	return currentSize;
+}
+
+template<class T>
+inline void VectorTemplate<T>::sort(bool(*callback)(T, T))
+{
+	for (int i = 0; i < currentSize - 1; i++)
+	{
+		for (int j = i + 1; j < currentSize; j++)
+		{
+			if (callback == nullptr)
+			{
+				if (arr[i] < arr[j])
+				{
+					T aux = arr[i];
+					arr[i] = arr[j];
+					arr[j] = aux;
+				}
+			}
+			else
+			{
+				if (callback(arr[i], arr[j]))
+				{
+					T aux = arr[i];
+					arr[i] = arr[j];
+					arr[j] = aux;
+				}
+			}
+		}
+	}
+}
+
+template<class T>
+inline void VectorTemplate<T>::firstIndexOf(T element, bool (*callback)(T, T))
+{
+	bool found = false;
+	for (int i = 0; i < currentSize; i++)
+	{
+		if (callback == nullptr)
+		{
+			if (arr[i] == element)
+			{
+				cout << "First index of element " << element << " is " << i << endl;
+				found = true;
+				break;
+			}
+		}
+		else
+		{
+			if (callback(arr[i], element))
+			{
+				cout << "First index of element " << element << " is " << i << endl;
+				found = true;
+				break;
+			}
+		}
+	}
+	if (found == false)
+		cout << "Element " << element << " was not found in the array!" << endl;
 }
 
 template<class T>
