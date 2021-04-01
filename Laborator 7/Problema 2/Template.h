@@ -1,12 +1,12 @@
 #pragma once
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
 
 template <class T>
 class VectorTemplate
 {
 	int currentSize;
-	int index;
 	T* arr;
 public:
 	VectorTemplate();
@@ -24,28 +24,45 @@ public:
 };
 
 template<class T>
-VectorTemplate<T>::VectorTemplate()
+inline VectorTemplate<T>::VectorTemplate()
 {
 	currentSize = 0;
-	arr = new T[currentSize + 1];
-	index = 0;
+	arr = (T*)(malloc(currentSize * sizeof(T)));
 }
 
 template<class T>
 VectorTemplate<T>::~VectorTemplate()
 {
-	delete[] arr;
-	arr = 0;
+	free(arr);
+	/*
+	* sau
+	* delete[] ar;;
+	* arr = nullptr;
+	*/
 }
 
 template<class T>
 void VectorTemplate<T>::push(T variable) // la sf vect
 {
-	// trebuie sa fac realocare de memorie cu inca o pozitie pt push
+	//realocare de memorie cu inca o pozitie pt push
+	/*
 	currentSize++;
-	arr = (T*)realloc(arr, currentSize);
-	arr[index] = variable;
-	index++;
+	arr = (T*)(malloc(currentSize * sizeof(T)));
+	arr[currentSize++] = variable;
+	arr = (T*)(realloc(arr, currentSize * sizeof(T)));
+	*/
+	if (currentSize == 0)
+	{
+		arr = (T*)(malloc(1 * sizeof(T)));
+		arr[currentSize] = variable;
+		currentSize++;
+	}
+	else
+	{
+		arr = (T*)(realloc(arr, (currentSize + 1) * sizeof(T)));
+		arr[currentSize] = variable;
+		currentSize++;
+	}
 }
 
 template<class T>
@@ -55,21 +72,21 @@ T VectorTemplate<T>::pop()
 }
 
 template<class T>
-void VectorTemplate<T>::remove(int position)
+inline void VectorTemplate<T>::remove(int position)
 {
-	for (int i = position; i < currentSize; i++)
+	for (int i = position; i < currentSize - 1; i++)
 	{
 		arr[i] = arr[i + 1];
 	}
 	currentSize--;
-	arr = (T*)realloc(arr, currentSize);
+	arr = (T*)realloc(arr, currentSize * sizeof(T));
 }
 
 template<class T>
-void VectorTemplate<T>::insert(T element, int position)
+inline void VectorTemplate<T>::insert(T element, int position)
 {
 	currentSize++;
-	arr = (T*)realloc(arr, currentSize);
+	arr = (T*)realloc(arr, (currentSize + 1) * sizeof(T));
 	for (int i = currentSize; i > position; i--)
 	{
 		arr[i] = arr[i - 1];
@@ -78,25 +95,25 @@ void VectorTemplate<T>::insert(T element, int position)
 }
 
 template<class T>
-T* VectorTemplate<T>::getElement(int position)
+inline T* VectorTemplate<T>::getElement(int position)
 {
 	return &arr[position];
 }
 
 template<class T>
-void VectorTemplate<T>::setElement(T element, int position)
+inline void VectorTemplate<T>::setElement(T element, int position)
 {
 	arr[position] = element;
 }
 
 template<class T>
-int VectorTemplate<T>::countElements()
+inline int VectorTemplate<T>::countElements()
 {
 	return currentSize;
 }
 
 template<class T>
-void VectorTemplate<T>::Print()
+inline void VectorTemplate<T>::Print()
 {
 	cout << "The array is: ";
 	for (int i = 0; i < currentSize; i++)
