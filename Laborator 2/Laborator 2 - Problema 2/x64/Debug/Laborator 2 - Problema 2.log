@@ -1,4 +1,0 @@
-﻿  main.cpp
-C:\Users\Ana Maria Mitrea\Documents\GitHub\POO2021-Mitrea-Ana-Maria\Laborator 2\Laborator 2 - Problema 2\main.cpp(13,25): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Ana Maria Mitrea\Documents\GitHub\POO2021-Mitrea-Ana-Maria\Laborator 2\Laborator 2 - Problema 2\main.cpp(17,27): warning C4305: 'argument': truncation from 'double' to 'float'
-  Laborator 2 - Problema 2.vcxproj -> C:\Users\Ana Maria Mitrea\Documents\GitHub\POO2021-Mitrea-Ana-Maria\Laborator 2\Laborator 2 - Problema 2\x64\Debug\Laborator 2 - Problema 2.exe
