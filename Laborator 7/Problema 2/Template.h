@@ -51,7 +51,7 @@ template<class T>
 inline VectorTemplate<T>::VectorTemplate()
 {
 	currentSize = 0;
-	arr = (T*)(malloc(currentSize * sizeof(T)));
+        arr = (T*)(malloc(currentSize * sizeof(T)));
 }
 
 template<class T>
@@ -69,13 +69,8 @@ template<class T>
 inline void VectorTemplate<T>::push(T variable) // la sf vect
 {
 	//realocare de memorie cu inca o pozitie pt push
-	/*
-	currentSize++;
-	arr = (T*)(malloc(currentSize * sizeof(T)));
-	arr[currentSize++] = variable;
-	arr = (T*)(realloc(arr, currentSize * sizeof(T)));
-	*/
-	if (currentSize == 0)
+
+        if (currentSize == 0)
 	{
 		arr = (T*)(malloc(1 * sizeof(T)));
 		arr[currentSize] = variable;
