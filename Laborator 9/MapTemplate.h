@@ -131,17 +131,34 @@ public:
 	}
 	bool Includes(Map<K, V>& map)
 	{
-		map.mapSort();
+		//map.mapSort();
 		int elemCount = 0;
 		V aux;
-		for (int i = 0; i < this->count; i++)
+		if (this->count > map.count) // caut in map-ul la care apelez functia
 		{
-			if (map.Get(vec[i].key, aux) == 1)
-				elemCount++;
+			for (int i = 0; i < this->count; i++)
+			{
+				if (map.Get(vec[i].key, aux) == 1)
+					elemCount++;
+			}
+			if (elemCount == map.count)
+				return true;
+			else
+				return false;
 		}
-		if (elemCount == map.count)
-			return true;
 		else
-			return false;
+		{
+			for (int i = 0; i < map.count; i++)  // caut in map-ul trimis ca parametru
+			{
+				// caut pas cu pas cheia din map in this
+				if (this->Get(map.vec[i].key, aux) == 1) 
+					elemCount++;	
+			}
+			if (elemCount == this->count)
+				return true;
+			else
+				return false;
+		}
+		
 	}
 };

@@ -53,8 +53,8 @@ int main()
     cout << "------------------------------------------------" << endl;
  
     Map<int, const char*> a;
-    a[100] = "Book";
-    a[3] = "Notebook";
+    a[1000] = "Book";
+    a[53] = "Notebook";
 
     if (m.Includes(a) == true)
         cout << "It is included!" << endl;
